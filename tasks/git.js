@@ -25,7 +25,10 @@ module.exports = function (grunt) {
                 grunt.util.spawn({
                     cmd: 'git',
                     args: args,
-                    opts: options.verbose ? { stdio: 'inherit' } : {}
+                    opts: {
+                        stdio: options.verbose ? 'inherit' : '',
+                        cwd: options.cwd
+                    }
                 }, function () {
                     callback.apply(this, arguments);
                 });
